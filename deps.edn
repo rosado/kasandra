@@ -1,0 +1,37 @@
+{:paths ["src" "resources"]
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.1"}
+  clj-antlr/clj-antlr {:mvn/version "0.2.4"}
+  org.clojure/core.match {:mvn/version "0.3.0"}
+  com.cerner/clara-rules {:mvn/version "0.20.0"}}
+ :aliases
+ {:test
+  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.641"}}
+   :extra-paths ["test"]}
+
+  :dev {:extra-paths ["../kasandra-dev/dev"
+                      "dev"]
+        :extra-deps {juji/editscript {:mvn/version "0.4.6"}}}
+
+  :cider
+  {:extra-deps
+   {cider/cider-nrepl {:mvn/version "0.25.0-SNAPSHOT"}}}
+
+  :nrepl
+  {:main-opts ["-m" "nrepl.cmdline"
+               "--middleware" "[cider.nrepl/cider-middleware,nrepl-rebl.core/wrap-rebl]"]
+   :extra-deps {nrepl/nrepl {:mvn/version "0.7.0"}}}
+
+  :expound {:extra-deps {expound/expound {:mvn/version "0.8.4"}}}
+
+  :clindex {:extra-deps {clindex/clindex {:mvn/version "0.4.3"}}}
+
+  :jar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+        :main-opts ["-m" "hf.depstar.jar" "kasandra.jar"]}
+
+  :install {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+            :main-opts ["-m" "deps-deploy.deps-deploy" "install" "kasandra.jar"]}
+  :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy"]}
+  }}
+

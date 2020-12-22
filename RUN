@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# note: this is how I start the repl when working on the project.
+#       You probably don't need all those aliases
+
+clj -M:rebl/rebl14:cider:nrepl:test:expound:clindex:dev
