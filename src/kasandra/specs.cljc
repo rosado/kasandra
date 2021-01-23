@@ -66,9 +66,7 @@
                 :kasandra.schema/view-columns
                 :kasandra.schema/primary-key]
           :opt [:kasandra.schema/keyspace
-                :kasandra.schema/view-options
-                ;;:kasandra.schema/clustering-order
-                ]))
+                :kasandra.schema/view-options]))
 
 
 
