@@ -1,4 +1,15 @@
-(ns kasandra.rules.effects)
+(ns kasandra.rules.effects
+  "Effects is the result of intents.
+
+  # Ordering
+
+  The collection of effects can potentially be grouped into groups determined
+  by the value under :effects/order.
+
+  The possible values are
+  - `:kasandra.rules.effects.order/before` - should be applied before others
+  - (no entry) - should be applied between others
+  - `:kasandra.rules.effects.order/after` - should be applied before others. ")
 
 ;;; TODO: docs about kasandra.rules.effects/order
 
