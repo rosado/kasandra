@@ -57,7 +57,7 @@
   "Apply effect to a schema-info object. Returns the updated schema-info."
   (fn [schema-info effect] (type schema-info)))
 
-(defn DEBUG-apply-effect
+(defn- apply-effect
   "Returns updates schema-info"
   [schema-info effect]
   {:pre [(= (type schema-info) :kasandra.schema/schema-info)
@@ -66,7 +66,7 @@
     (assoc updated-index :index (k/schema-index updated-index))))
 
 (defmethod -apply-effect ::k/schema-info [schema-info effect]
-  (DEBUG-apply-effect schema-info effect))
+  (apply-effect schema-info effect))
 
 (defn apply-effects
   [schema-info effects]
@@ -76,7 +76,7 @@
          fx-after :kasandra.rules.effects.order/after
          :as grouped} (group-by :effects/order effects)
         main-fx (get grouped nil)]
-    (reduce DEBUG-apply-effect
+    (reduce apply-effect
             schema-info
             (concat fx-before main-fx fx-after))))
 

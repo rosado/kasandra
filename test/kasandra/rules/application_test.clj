@@ -35,15 +35,15 @@
   (let [schema-info ^{:type ::k/schema-info } {:tables [table-a1] :views []}
         schema-info (k/add-index schema-info)]
     (testing "adding a table"
-      (let [result (application/DEBUG-apply-effect schema-info
-                                                   (effects/->CreateTable
-                                                    (assoc table-a1 ::k/table "b1")))]
+      (let [result (application/-apply-effect schema-info
+                                              (effects/->CreateTable
+                                               (assoc table-a1 ::k/table "b1")))]
         (is (= #{"a1" "b1"}
                (set (keys (:index result)))))
         
         (testing "and then dropping it"
-          (let [result (application/DEBUG-apply-effect result
-                                                       (effects/->DropTable "b1"))]
+          (let [result (application/-apply-effect result
+                                                  (effects/->DropTable "b1"))]
             (is (= #{"a1"} (set (keys (:index result)))))))))))
 
 (deftest column-add-and-drop
