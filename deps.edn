@@ -31,7 +31,12 @@
 
   :install {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
             :main-opts ["-m" "deps-deploy.deps-deploy" "install" "kasandra.jar"]}
-  :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
-           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy"]}
+  ;; :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+  ;;          :main-opts ["-m" "deps-deploy.deps-deploy" "deploy"]}
+
+  :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote
+                       :artifact "kasandra.jar"}}
   }}
 
