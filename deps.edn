@@ -15,7 +15,7 @@
 
   :cider
   {:extra-deps
-   {cider/cider-nrepl {:mvn/version "0.25.0-SNAPSHOT"}}}
+   {cider/cider-nrepl {:mvn/version "0.26.0"}}}
 
   :nrepl
   {:main-opts ["-m" "nrepl.cmdline"
